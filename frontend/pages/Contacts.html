@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Contacts Dashboard - SafePath</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/Contacts.css">
+    <link rel="stylesheet" href="../css/floating_sos.css">
+    <link rel="stylesheet" href="../css/nav_profile.css">
+    <link rel="stylesheet" href="../css/global_responsive.css"></head>
+<body>
+
+    <header class="header">
+        <img id="logo" src="../resources/logo.png" alt="Safety Path Logo">
+        <nav class="Nav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="route-analysis.html">Routes</a>
+            <a href="safteyanalysis.html">Safety Analytics</a>
+            <a href="report.html">Report</a>
+            <a href="sos-center.html">SOS Center</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+                <div class="user-profile">
+            <img src="../resources/nikhil.jpg" alt="User Profile" class="profile-pic">
+                        <span class="user-name">Welcome back, Nikhil</span>
+            <div class="profile-dropdown">
+
+                <a href="login.html">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <h1>Emergency Contacts</h1>
+            <p>Manage people who should be alerted during emergencies.</p>
+        </section>
+
+        <div class="toolbar">
+            <button class="btn-add"><i class="fas fa-plus"></i> Add Contact</button>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search contacts..." onkeyup="filterContacts()">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+
+        <div id="contactsContainer">
+            <p style="text-align: center; color: var(--text-muted); padding: 2rem;">Loading contacts...</p>
+        </div>
+
+        <!-- Add/Edit Contact Modal -->
+        <div class="modal-overlay" id="contactModal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Add New Contact</h2>
+                    <button class="close-btn" id="closeModalBtn"><i class="fas fa-times"></i></button>
+                </div>
+                <form id="contactForm">
+                    <input type="hidden" id="contactId">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="contactName" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="contactPhone" required placeholder="+91 90000 12345">
+                    </div>
+                    <div class="form-group">
+                        <label>Relationship</label>
+                        <select id="contactRelation" required>
+                            <option value="Primary Guardian">Primary Guardian</option>
+                            <option value="Family">Family</option>
+                            <option value="Friend">Friend</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelModalBtn">Cancel</button>
+                        <button type="submit" class="btn btn-blue" id="saveContactBtn">Save Contact</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </main>
+
+    <footer class="footer">
+        <div class="footer_container">
+            <div class="footer_brand">
+                <img src="../resources/logo.png" alt="Safety Path Logo" class="footer_brand_logo">
+                <p>AI-powered safety navigation platform helping users make safer mobility decisions.</p>
+            </div>
+            <div class="footer_links">
+                <h4>Quick Links</h4>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="route-analysis.html">Routes</a>
+                <a href="safteyanalysis.html">Safety Analytics</a>
+                <a href="report.html">Report Incident</a>
+                <a href="sos-center.html">SOS Center</a>
+            </div>
+            <div class="footer_support">
+                <h4>Support</h4>
+                <p>Email: support@safepath.com</p>
+                <p>Emergency Help: 112</p>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <p>© 2026 Safety Path | Built for safer mobility</p>
+        </div>
+    </footer>
+
+    <script type="module" src="../Scripts/Contacts.js"></script>
+    <script src="../Scripts/nav.js"></script>
+    <script type="module" src="../firebase/session.js"></script>
+    <button class="floating_sos">SOS</button>
+    <script type="module" src="../Scripts/sos-handler.js"></script>
+</body>
+</html>

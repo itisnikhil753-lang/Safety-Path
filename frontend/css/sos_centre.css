@@ -1,0 +1,267 @@
+/* ===== Reset ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #F0F4FA;
+}
+
+/* ===== Navbar ===== */
+
+.header {
+    background: #022038;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#logo {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    position: absolute;
+    left: 20px;
+}
+
+.Nav {
+    display: flex;
+    gap: 35px;
+}
+
+.Nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.Nav a:hover {
+    color: #14B8A6;
+}
+
+.loginbtn {
+    position: absolute;
+    right: 40px;
+    width: 150px;
+    height: 40px;
+    background: #14B8A6;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+}
+
+/* ===== Page Container ===== */
+
+.sos_container {
+    padding: 60px 80px;
+}
+
+.sos_container h1 {
+    color: #022038;
+    margin-bottom: 40px;
+}
+
+/* ===== Main SOS Button ===== */
+
+.sos_main {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.sos_trigger {
+    background: #E53935;
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 25px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+.sos_main p {
+    margin-top: 15px;
+    color: #5F6B7A;
+}
+
+/* ===== Silent Mode ===== */
+
+.silent_mode {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Toggle Switch */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ccc;
+    border-radius: 24px;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked+.slider {
+    background: #14B8A6;
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+/* ===== Contacts ===== */
+
+.contacts_section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.contacts_list {
+    list-style: none;
+}
+
+.contacts_list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* ===== Audio Section ===== */
+
+.audio_section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.record_btn {
+    background: #14B8A6;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* ===== Incident Logs ===== */
+
+.incident_logs {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.incident_logs ul {
+    list-style: none;
+}
+
+.incident_logs li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* New styles for menu toggle */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+    z-index: 1001;
+}
+
+/* ===== Responsive ===== */
+@media(max-width:900px) {
+    .header {
+        justify-content: center;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .Nav {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: -100%;
+        width: 250px;
+        height: calc(100vh - 72px);
+        background: #022038;
+        padding: 20px;
+        gap: 20px;
+        transition: 0.3s;
+        z-index: 1000;
+    }
+
+    .Nav.active {
+        left: 0;
+    }
+
+    .loginbtn {
+        display: none;
+    }
+
+    .sos_container {
+        padding: 40px 20px;
+    }
+
+    .silent_mode {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+
+/* Logo Image Styling */
+

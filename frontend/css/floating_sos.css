@@ -1,0 +1,24 @@
+/* Floating SOS Common Style */
+.floating_sos {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #E53935;
+    color: white;
+    border: none;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+
+/* Logo Image Styling */
+#logo, .footer_brand_logo, img.logo {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+}

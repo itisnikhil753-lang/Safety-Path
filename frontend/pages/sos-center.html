@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS Center - SafePath</title>
+    <link rel="stylesheet" href="../css/sos_centre.css">
+    <link rel="stylesheet" href="../css/nav_profile.css">
+    <link rel="stylesheet" href="../css/global_responsive.css"></head>
+
+<body>
+    <header class="header">
+        <img id="logo" src="../resources/logo.png" alt="Safety Path Logo">
+        <nav class="Nav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="route-analysis.html">Routes</a>
+            <a href="safteyanalysis.html">Safety Analytics</a>
+            <a href="report.html">Report</a>
+            <a href="sos-center.html">SOS Center</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+                <div class="user-profile">
+            <img src="../resources/nikhil.jpg" alt="User Profile" class="profile-pic">
+                        <span class="user-name">Welcome back, Nikhil</span>
+            <div class="profile-dropdown">
+
+                <a href="login.html">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="sos_container">
+        <h1>Emergency SOS Center</h1>
+        <div class="sos_main">
+            <button class="sos_trigger">TRIGGER SOS</button>
+            <p>Press to alert emergency contacts and share your live location.</p>
+        </div>
+        <div class="silent_mode">
+            <h3>Silent Emergency Mode</h3>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="contacts_section">
+            <h3>Emergency Contacts</h3>
+            <ul class="contacts_list" id="contactsContainer">
+                <!-- Dynamic Contacts -->
+                <li style="text-align: center; color: #6B7280; padding: 10px;">Loading contacts...</li>
+            </ul>
+        </div>
+        <div class="audio_section">
+            <h3>Emergency Audio Recorder</h3>
+            <button class="record_btn">Start Recording</button>
+            <p>Audio will be sent to emergency contacts.</p>
+        </div>
+        <div class="incident_logs">
+            <h3>Recent Incident Logs</h3>
+            <ul id="incidentLogsContainer">
+                <!-- Dynamic Logs -->
+                <li style="text-align: center; color: #6B7280; padding: 10px;">Loading logs...</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer_container">
+            <div class="footer_brand">
+                <img src="../resources/logo.png" alt="Safety Path Logo" class="footer_brand_logo">
+                <p>AI-powered safety navigation platform helping users make safer mobility decisions.</p>
+            </div>
+            <div class="footer_links">
+                <h4>Quick Links</h4>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="route-analysis.html">Routes</a>
+                <a href="safteyanalysis.html">Safety Analytics</a>
+                <a href="report.html">Report Incident</a>
+                <a href="sos-center.html">SOS Center</a>
+            </div>
+            <div class="footer_support">
+                <h4>Support</h4>
+                <p>Email: support@safepath.com</p>
+                <p>Emergency Help: 112</p>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <p>© 2026 Safety Path | Built for safer mobility</p>
+        </div>
+    </footer>
+
+    <script type="module" src="../Scripts/sos-center.js"></script>
+    <script src="../Scripts/nav.js"></script>
+    <script type="module" src="../firebase/session.js"></script>
+    <script type="module" src="../Scripts/sos-handler.js"></script>
+</body>
+
+</html>

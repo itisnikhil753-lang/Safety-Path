@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odisha Crime & Safety Dashboard</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <link rel="stylesheet" href="../css/safteyanalysis.css">
+    <link rel="stylesheet" href="../css/floating_sos.css">
+    <link rel="stylesheet" href="../css/nav_profile.css">
+    <link rel="stylesheet" href="../css/global_responsive.css"></head>
+<body>
+
+    <header class="header">
+        <img id="logo" src="../resources/logo.png" alt="Safety Path Logo">
+        <nav class="Nav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="route-analysis.html">Routes</a>
+            <a href="safteyanalysis.html">Safety Analytics</a>
+            <a href="report.html">Report</a>
+            <a href="sos-center.html">SOS Center</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+                <div class="user-profile">
+            <img src="../resources/nikhil.jpg" alt="User Profile" class="profile-pic">
+                        <span class="user-name">Welcome back, Nikhil</span>
+            <div class="profile-dropdown">
+
+                <a href="login.html">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <header class="main-header">
+        Odisha Crime & Safety Dashboard
+    </header>
+
+    <main class="dashboard-container">
+        <section class="section-box trend-section">
+            <div class="section-title">Crime Trend (Historical)</div>
+            <div class="chart-container">
+                <canvas id="trendChart"></canvas>
+            </div>
+        </section>
+
+        <section class="section-box bar-section">
+            <div class="section-title">Top Offenses by Crime Count</div>
+            <div class="chart-container">
+                <canvas id="offensesChart"></canvas>
+            </div>
+        </section>
+
+        <section class="section-box safety-section">
+            <div class="section-title">Area Safety Score</div>
+            <div class="chart-container" style="display: flex; justify-content: center; align-items: center;">
+                <canvas id="safetyChart" style="max-width: 90%; max-height: 90%;"></canvas>
+                <div class="chart-center-text gauge-text">
+                    <h3>82</h3>
+                    <p>Good</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-box donut-section">
+            <div class="section-title">Incidents by Status</div>
+            <div class="chart-container" style="display: flex; justify-content: center; align-items: center;">
+                <canvas id="statusChart" style="max-width: 80%; max-height: 80%;"></canvas>
+                <div class="chart-center-text donut-text">
+                    <h3>3,866</h3>
+                    <p>Total Crimes</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-box map-section">
+            <button id="expandBtn" class="expand-btn" title="Expand Map">&#9974;</button>
+            <div id="map"></div>
+        </section>
+
+        <section class="section-box contrib-section">
+            <div class="section-title">Community Contributions</div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4 id="totalReportsCount">...</h4>
+                    <p>Total Reports</p>
+                </div>
+                <div class="stat-card">
+                    <h4 id="verificationRatePerc">...</h4>
+                    <p>Verification Rate</p>
+                </div>
+                <div class="stat-card">
+                    <h4 id="activeContributorsCount">...</h4>
+                    <p>Active Contributors</p>
+                </div>
+                <div class="stat-card">
+                    <h4 id="engagementTrend">...</h4>
+                    <p>MoM Engagement</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="../Scripts/safteyanalysis.js"></script>
+    <script src="../Scripts/nav.js"></script>
+    <script type="module" src="../firebase/session.js"></script>
+    
+    <footer class="footer">
+        <div class="footer_container">
+            <div class="footer_brand">
+                <img src="../resources/logo.png" alt="Safety Path Logo" class="footer_brand_logo">
+                <p>AI-powered safety navigation platform helping users make safer mobility decisions.</p>
+                <div style="margin-top: 10px; font-size: 0.8rem;">
+                    Source: <a href="https://data.gov.in" target="_blank" style="color: #14B8A6; text-decoration: none;">data.gov.in</a> (NCRB IPC Crimes 2020-2022)
+                </div>
+            </div>
+            <div class="footer_links">
+                <h4>Quick Links</h4>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="route-analysis.html">Routes</a>
+                <a href="safteyanalysis.html">Safety Analytics</a>
+                <a href="report.html">Report Incident</a>
+                <a href="sos-center.html">SOS Center</a>
+            </div>
+            <div class="footer_support">
+                <h4>Support</h4>
+                <p>Email: support@safepath.com</p>
+                <p>Emergency Help: 112</p>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <p>© 2026 Safety Path | Built for safer mobility</p>
+        </div>
+    </footer>
+
+    <button class="floating_sos">SOS</button>
+    <script type="module" src="../Scripts/sos-handler.js"></script>
+</body>
+</html>

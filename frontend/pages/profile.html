@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Settings - SafePath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/floating_sos.css">
+    <link rel="stylesheet" href="../css/nav_profile.css">
+    <link rel="stylesheet" href="../css/global_responsive.css"></head>
+<body>
+    <header class="header">
+        <img id="logo" src="../resources/logo.png" alt="Safety Path Logo">
+        <nav class="Nav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="route-analysis.html">Routes</a>
+            <a href="safteyanalysis.html">Safety Analytics</a>
+            <a href="report.html">Report</a>
+            <a href="sos-center.html">SOS Center</a>
+            <a href="profile.html" class="active">Profile</a>
+        </nav>
+        <div class="user-profile" id="logoutBtn">
+            <img src="../resources/nikhil.jpg" alt="User Profile" class="profile-pic">
+            <span class="user-name">Welcome back, Nikhil</span>
+            <div class="profile-dropdown">
+                <a href="login.html">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="profile-container">
+        
+        <aside class="sidebar">
+            <div class="user-brief">
+                <div class="avatar">
+                    <img src="https://ui-avatars.com/api/?name=User+Name&background=022038&color=fff" alt="User Avatar" id="userAvatar">
+                </div>
+                <h3 id="userNameDisplay">John Doe</h3>
+            </div>
+            
+            <nav class="settings-nav">
+                <button class="nav-item active" data-target="personal">Personal Details</button>
+                <button class="nav-item" data-target="privacy">Privacy Settings</button>
+                <button class="nav-item" data-target="guardians">Guardian Network</button>
+                <button class="nav-item" data-target="sos">SOS Preferences</button>
+                <button class="nav-item" style="color: #14B8A6; font-weight: 500;" onclick="window.location.href='volunteer.html'">&#9829; Volunteer Registration</button>
+                <button class="nav-item" style="color: #F59E0B; font-weight: 600;" onclick="window.location.href='volunteerdash.html'">&#9889; Volunteer Dashboard</button>
+            </nav>
+        </aside>
+
+        <main class="settings-content">
+            
+            <!-- Personal Details -->
+            <section id="personal" class="settings-section active">
+                <h2>Personal Details</h2>
+                <form class="settings-form" id="personalForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" id="firstNameInput" value="John">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" id="lastNameInput" value="Doe">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="emailInput" value="john.doe@example.com" readonly style="background: #F1F5F9; cursor: not-allowed;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phoneInput" value="+91 98765 43210">
+                    </div>
+                    
+                    <button type="submit" class="save-btn">Save Changes</button>
+                </form>
+            </section>
+
+            <!-- Privacy Settings -->
+            <section id="privacy" class="settings-section">
+                <h2>Privacy Settings</h2>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Location Sharing</h4>
+                        <p>Allow guardians to see your live location during a journey.</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Anonymous Reporting</h4>
+                        <p>Submit incident reports without attaching your username.</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Data Collection</h4>
+                        <p>Allow SafePath to use your anonymized travel data to improve routing algorithms.</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Guardian Settings -->
+            <section id="guardians" class="settings-section">
+                <h2>Guardian Network</h2>
+                <p style="color: #64748B; margin-bottom: 20px; font-size: 14px;">Manage who gets alerted when you trigger an SOS.</p>
+                
+                <ul class="guardian-list" id="guardianList">
+                    <li style="color: #64748B; font-size: 14px; padding: 12px 0;">Loading guardians...</li>
+                </ul>
+                
+                <button class="add-guardian-btn" onclick="window.location.href='Contacts.html'">Manage Contacts</button>
+            </section>
+
+            <!-- SOS Preferences -->
+            <section id="sos" class="settings-section">
+                <h2>SOS Preferences</h2>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Silent Mode Toggle</h4>
+                        <p>If active, SOS will not trigger loud alarms locally, but will silently alert guardians.</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="silentModeToggle">
+                        <span class="slider red"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Auto-Audio Recording</h4>
+                        <p>Automatically start recording environment audio when SOS is activated.</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider red"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Auto-Alert Police (112)</h4>
+                        <p>Automatically forward high-severity SOS triggers to local authorities.</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox">
+                        <span class="slider red"></span>
+                    </label>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer_container">
+            <div class="footer_brand">
+                <img src="../resources/logo.png" alt="Safety Path Logo" class="footer_brand_logo">
+                <p>AI-powered safety navigation platform helping users make safer mobility decisions.</p>
+            </div>
+            <div class="footer_links">
+                <h4>Quick Links</h4>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="route-analysis.html">Routes</a>
+                <a href="safteyanalysis.html">Safety Analytics</a>
+                <a href="report.html">Report Incident</a>
+                <a href="sos-center.html">SOS Center</a>
+            </div>
+            <div class="footer_support">
+                <h4>Support</h4>
+                <p>Email: support@safepath.com</p>
+                <p>Emergency Help: 112</p>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <p>© 2026 Safety Path | Built for safer mobility</p>
+        </div>
+    </footer>
+
+    <!-- Feedback Toast -->
+    <div id="toast" class="toast">Settings Saved Successfully</div>
+
+    <script type="module" src="../Scripts/profile.js"></script>
+    <script src="../Scripts/nav.js"></script>
+    <script type="module" src="../firebase/session.js"></script>
+    <button class="floating_sos">SOS</button>
+    <script type="module" src="../Scripts/sos-handler.js"></script>
+</body>
+</html>

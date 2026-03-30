@@ -1,0 +1,273 @@
+{
+  "info": {
+    "name": "GDG-Team-1 API",
+    "description": "Postman Collection for GDG-Team-1 Backend Endpoints. Includes requests for User Profiles, Reports, and Volunteer capabilities.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000/api",
+      "type": "string"
+    },
+    {
+      "key": "firebase_token",
+      "value": "YOUR_FIREBASE_ID_TOKEN_HERE",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{firebase_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/users/profile",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{firebase_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\\n  \\"name\\": \\"John Doe\\",\\n  \\"email\\": \\"johndoe@example.com\\"\\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/users/profile",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Get All Reports",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{firebase_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reports",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reports"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Specific Report",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{firebase_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reports/:id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reports",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "ENTER_REPORT_ID"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Submit Report",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{firebase_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\\n  \\"incidentType\\": \\"Fire\\",\\n  \\"specificType\\": \\"Building Fire\\",\\n  \\"location\\": \\"20.2961, 85.8245\\",\\n  \\"description\\": \\"Small fire in the warehouse\\"\\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/reports",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reports"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Volunteers",
+      "item": [
+        {
+          "name": "Get Volunteer Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{firebase_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/volunteers/status",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "volunteers",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Apply as Volunteer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{firebase_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\\n  \\"fullName\\": \\"Jane Doe\\",\\n  \\"phone\\": \\"9876543210\\",\\n  \\"email\\": \\"janedoe@example.com\\",\\n  \\"experience\\": \\"First Aid Certified\\",\\n  \\"emergencyContact\\": \\"1234567890\\"\\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/volunteers/apply",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "volunteers",
+                "apply"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Toggle Duty Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{firebase_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\\n  \\"isOnDuty\\": true\\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/volunteers/toggle-status",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "volunteers",
+                "toggle-status"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

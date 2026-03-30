@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/floating_sos.css">
+    <link rel="stylesheet" href="../css/nav_profile.css">
+    <link rel="stylesheet" href="../css/global_responsive.css">
+</head>
+
+<body>
+    <header class="header">
+        <img id="logo" src="../resources/logo.png" alt="Safety Path Logo">
+        <nav class="Nav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="route-analysis.html">Routes</a>
+            <a href="safteyanalysis.html">Safety Analytics</a>
+            <a href="report.html">Report</a>
+            <a href="sos-center.html">SOS Center</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+        <div class="user-profile">
+            <img src="../resources/nikhil.jpg" alt="User Profile" class="profile-pic">
+            <span class="user-name">Welcome back, Nikhil</span>
+            <div class="profile-dropdown">
+                <a href="login.html">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Safety. Before It’s Needed.</h1>
+            <p>AI-powered preventive safety platform for smarter mobility decisions.</p>
+            <button class="sos-btn">Emergency SOS</button>
+        </div>
+    </section>
+
+    <section class="route_search">
+        <h2>Find Safest Route</h2>
+        <div class="search_box">
+            <div class="autocomplete-wrapper">
+                <input type="text" id="start-location" placeholder="Enter Start Location" autocomplete="off">
+                <ul id="start-suggestions" class="autocomplete-list"></ul>
+            </div>
+            <div class="autocomplete-wrapper">
+                <input type="text" id="destination" placeholder="Enter Destination" autocomplete="off">
+                <ul id="dest-suggestions" class="autocomplete-list"></ul>
+            </div>
+            <button id="search-route-btn" class="search_btn">Search Route</button>
+        </div>
+        <div id="route-info" style="display: none; padding: 10px; background-color: #f1f5f9; border-radius: 8px; margin-top: 15px; text-align: center; color: #1e293b; font-weight: 500;"></div>
+    </section>
+
+    <section class="dashboard_main">
+        <div class="map_container map-section">
+            <button id="expandBtn" class="expand-btn" title="Expand Map">&#9974;</button>
+            <div id="map"></div>
+        </div>
+        <div class="risk_panel">
+            <h3>Area Risk Indicators</h3>
+            <div class="risk_card low">
+                <p>Green Zone</p>
+                <span>Low Risk</span>
+            </div>
+            <div class="risk_card medium">
+                <p>Yellow Zone</p>
+                <span>Moderate Risk</span>
+            </div>
+            <div class="risk_card high">
+                <p>Red Zone</p>
+                <span>High Risk</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer_container">
+            <div class="footer_brand">
+                <img src="../resources/logo.png" alt="Safety Path Logo" class="footer_brand_logo">
+                <p>AI-powered safety navigation platform helping users make safer mobility decisions.</p>
+            </div>
+            <div class="footer_links">
+                <h4>Quick Links</h4>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="route-analysis.html">Routes</a>
+                <a href="safteyanalysis.html">Safety Analytics</a>
+                <a href="report.html">Report Incident</a>
+                <a href="sos-center.html">SOS Center</a>
+            </div>
+            <div class="footer_support">
+                <h4>Support</h4>
+                <p>Email: support@safepath.com</p>
+                <p>Emergency Help: 112</p>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <p>© 2026 Safety Path | Built for safer mobility</p>
+        </div>
+    </footer>
+
+    <script src="../Scripts/dashboard.js"></script>
+    <script src="../Scripts/nav.js"></script>
+    <script type="module" src="../firebase/session.js"></script>
+    <script type="module" src="../Scripts/sos-handler.js"></script>
+</body>
+
+</html>

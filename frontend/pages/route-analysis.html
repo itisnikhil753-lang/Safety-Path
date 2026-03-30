@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Analysis - SafePath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="../css/route-analysis.css">
+    <link rel="stylesheet" href="../css/floating_sos.css">
+    <link rel="stylesheet" href="../css/nav_profile.css">
+    <link rel="stylesheet" href="../css/global_responsive.css"></head>
+<body>
+    <header class="header">
+        <img id="logo" src="../resources/logo.png" alt="Safety Path Logo">
+        <nav class="Nav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="route-analysis.html">Routes</a>
+            <a href="safteyanalysis.html">Safety Analytics</a>
+            <a href="report.html">Report</a>
+            <a href="sos-center.html">SOS Center</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+                <div class="user-profile">
+            <img src="../resources/nikhil.jpg" alt="User Profile" class="profile-pic">
+                        <span class="user-name">Welcome back, Nikhil</span>
+            <div class="profile-dropdown">
+
+                <a href="login.html">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="route-container">
+        <!-- Sidebar for Route Selection -->
+        <aside class="route-sidebar">
+            <div class="search-section">
+                <h2>Find Route</h2>
+                <div class="search-box">
+                    <div class="search-input-wrapper">
+                        <input type="text" id="start-loc" placeholder="Start Location (e.g., Kalinga Stadium)" autocomplete="off">
+                        <div id="start-results" class="autocomplete-results"></div>
+                    </div>
+                    <div class="search-input-wrapper">
+                        <input type="text" id="end-loc" placeholder="Destination (e.g., Patia)" autocomplete="off">
+                        <div id="end-results" class="autocomplete-results"></div>
+                    </div>
+                    <button id="search-routes-btn">Analyze Routes</button>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <h3>Alternative Routes</h3>
+                <div class="route-card recommended" id="route-card-1">
+                    <div class="route-header">
+                        <h4>Route 1 (Safest)</h4>
+                        <span class="badge green" id="route1-badge">94% Safe</span>
+                    </div>
+                    <div class="route-stats">
+                        <p><strong>Time:</strong> <span id="route1-time">24 mins</span></p>
+                        <p><strong>Distance:</strong> <span id="route1-dist">12 km</span></p>
+                        <p><strong>Risk Factors:</strong> <span id="route1-risks">Well Lit, Heavy Traffic</span></p>
+                    </div>
+                </div>
+
+                <div class="route-card" id="route-card-2" style="display: none;">
+                    <div class="route-header">
+                        <h4>Route 2 (Fastest)</h4>
+                        <span class="badge yellow" id="route2-badge">76% Safe</span>
+                    </div>
+                    <div class="route-stats">
+                        <p><strong>Time:</strong> <span id="route2-time">18 mins</span></p>
+                        <p><strong>Distance:</strong> <span id="route2-dist">9.5 km</span></p>
+                        <p><strong>Risk Factors:</strong> <span id="route2-risks">Low Lighting near CRP Square</span></p>
+                    </div>
+                </div>
+                
+                <div class="route-card" id="route-card-3" style="display: none;">
+                    <div class="route-header">
+                        <h4>Route 1 (Shortest)</h4>
+                        <span class="badge red" id="route3-badge">45% Safe</span>
+                    </div>
+                    <div class="route-stats">
+                        <p><strong>Time:</strong> <span id="route3-time">22 mins</span></p>
+                        <p><strong>Distance:</strong> <span id="route3-dist">8.2 km</span></p>
+                        <p><strong>Risk Factors:</strong> <span id="route3-risks">Isolated Area, 3 Reported Incidents</span></p>
+                    </div>
+                </div>
+                <p id="route-placeholder" style="color: #64748B; font-size: 14px; text-align: center; padding: 20px;">Use the search above to find real-world routes.</p>
+            </div>
+            
+            <div class="risk-breakdown">
+                <h3>Risk Breakdown</h3>
+                <ul class="risk-list">
+                    <li><span class="dot red"></span> High Crime Area (2 spots)</li>
+                    <li><span class="dot yellow"></span> Poor Lighting (1.2 km stretch)</li>
+                    <li><span class="dot green"></span> Police Presence (3 booths)</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Map Area -->
+        <main class="map-area">
+            <div class="map-controls">
+                <label><input type="checkbox" id="heatmapToggle" checked> Toggle Heatmap</label>
+                <label><input type="checkbox" id="incidentsToggle" checked> Show Incidents</label>
+            </div>
+            <div id="route-map"></div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer_container">
+            <div class="footer_brand">
+                <img src="../resources/logo.png" alt="Safety Path Logo" class="footer_brand_logo">
+                <p>AI-powered safety navigation platform helping users make safer mobility decisions.</p>
+            </div>
+            <div class="footer_links">
+                <h4>Quick Links</h4>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="route-analysis.html">Routes</a>
+                <a href="safteyanalysis.html">Safety Analytics</a>
+                <a href="report.html">Report Incident</a>
+                <a href="sos-center.html">SOS Center</a>
+            </div>
+            <div class="footer_support">
+                <h4>Support</h4>
+                <p>Email: support@safepath.com</p>
+                <p>Emergency Help: 112</p>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <p>© 2026 Safety Path | Built for safer mobility</p>
+        </div>
+    </footer>
+
+    <script src="../Scripts/route-analysis.js"></script>
+    <script src="../Scripts/nav.js"></script>
+    <script type="module" src="../firebase/session.js"></script>
+    <button class="floating_sos">SOS</button>
+    <script type="module" src="../Scripts/sos-handler.js"></script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #F0F4FA;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navbar */
+.header{
+    background:#022038;
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    flex-shrink: 0;
+}
+
+#logo{
+    color:white;
+    font-size:18px;
+    font-weight:600;
+    position:absolute;
+    left:20px;
+}
+
+.Nav{
+    display:flex;
+    gap:35px;
+}
+
+.Nav a{
+    text-decoration:none;
+    color:white;
+    font-size:16px;
+    transition:0.2s;
+}
+
+.Nav a:hover{
+    color:#14B8A6;
+}
+
+.loginbtn{
+    position:absolute;
+    right:40px;
+    width:150px;
+    height:40px;
+    background:#14B8A6;
+    border:none;
+    border-radius:6px;
+    color:white;
+    cursor:pointer;
+}
+
+/* Form Container */
+.volunteer-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    padding: 40px;
+    width: 90%;
+}
+
+.volunteer-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.volunteer-header h2 {
+    color: #022038;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.volunteer-header p {
+    color: #64748B;
+    font-size: 15px;
+}
+
+/* Form Styles */
+.volunteer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #022038;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    padding: 12px;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    background: #F8FAFC;
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    border-color: #14B8A6;
+    background: white;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* File Drop Area */
+.file-drop-area {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    border: 2px dashed #CBD5E1;
+    border-radius: 6px;
+    background: #F8FAFC;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.file-drop-area:hover {
+    border-color: #14B8A6;
+    background: #F0FDFA;
+}
+
+.file-msg {
+    font-size: 14px;
+    color: #64748B;
+}
+
+.file-drop-area input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Buttons */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+    border-top: 1px solid #F1F5F9;
+    padding-top: 20px;
+}
+
+.cancel-btn {
+    padding: 12px 24px;
+    background: transparent;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    color: #64748B;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cancel-btn:hover {
+    background: #F1F5F9;
+    color: #333;
+}
+
+.submit-btn {
+    padding: 12px 24px;
+    background: #14B8A6;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.submit-btn:hover {
+    background: #0D9488;
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #10B981;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(16,185,129,0.3);
+    transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
+}
+
+.toast.show {
+    bottom: 40px;
+}
+
+/* New styles for menu toggle */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    left: 60px;
+    z-index: 1001;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .header {
+        justify-content: center;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .Nav {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: -100%;
+        width: 250px;
+        height: calc(100vh - 72px);
+        background: #022038;
+        padding: 20px;
+        gap: 20px;
+        transition: 0.3s;
+        z-index: 1000;
+    }
+
+    .Nav.active {
+        left: 0;
+    }
+
+    .loginbtn {
+        display: none;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

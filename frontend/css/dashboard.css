@@ -1,0 +1,420 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #F0F4FA;
+}
+
+/*Header Section*/
+.header {
+    background: #022038;
+    /* height removed to use centralized 90px from nav_profile.css */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#logo {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    position: absolute;
+    left: 20px;
+}
+
+.Nav {
+    display: flex;
+    gap: 35px;
+}
+
+.Nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.Nav a:hover {
+    color: #14B8A6;
+}
+
+.loginbtn {
+    position: absolute;
+    right: 40px;
+    width: 150px;
+    height: 40px;
+    background: #14B8A6;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+}
+
+/* High-Impact Hero Section */
+.hero {
+  position: relative;
+  height: 85vh;
+  background: 
+    linear-gradient(rgba(0, 30, 60, 0.65), rgba(0, 0, 0, 0.75)),
+    url('../resources/hero_img.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 0 80px;
+  overflow: hidden;
+  animation: zoomBg 20s infinite alternate ease-in-out;
+}
+
+/* Content styling */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero p {
+  margin-top: 12px;
+  font-size: 1.4rem;
+  color: #dcdcdc;
+}
+
+/* SOS button styling */
+.sos-btn {
+  margin-top: 24px;
+  background: #e53935;
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 15px rgba(229, 57, 53, 0.4);
+}
+
+.sos-btn:hover {
+  background: #c62828;
+  transform: scale(1.05);
+  box-shadow: 0 12px 20px rgba(229, 57, 53, 0.5);
+}
+
+@keyframes zoomBg {
+  0% {
+    background-size: 100%;
+  }
+  100% {
+    background-size: 110%;
+  }
+}
+
+/*Route Search*/
+
+.route_search {
+    background: white;
+    padding: 40px 80px;
+}
+
+.route_search h2 {
+    margin-bottom: 20px;
+    color: #022038;
+}
+
+.search_box {
+    display: flex;
+    gap: 15px;
+}
+
+.search_box input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 220px;
+}
+
+.search_btn {
+    background: #14B8A6;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/*Dashboard Main*/
+
+.dashboard_main {
+    display: flex;
+    gap: 40px;
+    padding: 50px 80px;
+}
+
+/*Map*/
+
+.map_container {
+    flex: 2;
+}
+
+#map {
+    height: 350px;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.map-section {
+    position: relative;
+}
+
+.expand-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    background-color: white;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+    transition: background-color 0.2s;
+}
+
+.expand-btn:hover {
+    background-color: #f4f4f4;
+}
+
+.map-section.expanded {
+    position: fixed;
+    top: 15vh;
+    left: 15vw;
+    width: 70vw;
+    height: 70vh;
+    z-index: 9999;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.map-section.expanded #map {
+    height: 100%;
+    width: 100%;
+}
+
+.map-label {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/*Risk Panel*/
+
+.risk_panel {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.risk_panel h3 {
+    margin-bottom: 15px;
+}
+
+.risk_card {
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    color: white;
+}
+
+.low {
+    background: #22c55e;
+}
+
+.medium {
+    background: #f59e0b;
+}
+
+.high {
+    background: #ef4444;
+}
+
+
+
+/* ===== Footer ===== */
+
+
+/* Footers removed as they are now centralized in nav_profile.css */
+
+/* ===== Responsive ===== */
+
+/* New styles for menu toggle */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+    z-index: 1001;
+}
+
+@media(max-width:900px) {
+
+    .header {
+        justify-content: center;
+    }
+
+    #logo {
+        position: relative;
+        left: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .Nav {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: -100%;
+        width: 250px;
+        height: calc(100vh - 72px);
+        background: #022038;
+        padding: 20px;
+        gap: 20px;
+        transition: 0.3s;
+        z-index: 1000;
+    }
+
+    .Nav.active {
+        left: 0;
+    }
+
+    .loginbtn {
+        display: none;
+        /* Hide login button on mobile for now, or add it to the menu */
+    }
+
+    .hero_section {
+        padding: 40px 20px;
+        text-align: center;
+    }
+    
+    .hero_content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .hero_left {
+        max-width: 100%;
+    }
+
+    .hero_buttons {
+        justify-content: center;
+    }
+    
+    .hero_right {
+        justify-content: center;
+    }
+    
+    .hero_img {
+        max-width: 100%;
+    }
+
+    .route_search {
+        padding: 30px 20px;
+    }
+
+    .search_box {
+        flex-direction: column;
+    }
+
+    .search_box input {
+        width: 100%;
+    }
+
+    .dashboard_main {
+        flex-direction: column;
+        padding: 30px 20px;
+    }
+
+    .map_container {
+        width: 100%;
+    }
+
+
+
+}
+
+
+/* Logo Image Styling */
+
+
+/* Autocomplete Styles */
+.autocomplete-wrapper {
+    position: relative;
+    width: 220px;
+}
+
+.autocomplete-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none; /* hidden by default */
+}
+
+.autocomplete-list li {
+    padding: 10px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.autocomplete-list li:last-child {
+    border-bottom: none;
+}
+
+.autocomplete-list li:hover {
+    background-color: #f8f9fa;
+    color: #14B8A6;
+}
+
+@media(max-width:900px) {
+    .autocomplete-wrapper {
+        width: 100%;
+    }
+}

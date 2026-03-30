@@ -1,0 +1,328 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F0F4FA;
+    color: #333;
+}
+
+.top-nav {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 30px;
+    border-bottom: 1px solid #E5E7EB;
+    gap: 25px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+}
+
+.user-profile img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sub-nav {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    border-bottom: 1px solid #E5E7EB;
+    font-size: 13px;
+    color: #555;
+}
+
+.sub-nav-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background-color: #F0F4FA;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #555;
+}
+
+.main-header {
+    background-color: #022038;
+    color: white;
+    text-align: right;
+    padding: 20px 40px;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1.1fr 1.1fr 1.2fr;
+    grid-template-areas:
+        "trend   bar   safety"
+        "donut   map   contrib";
+    gap: 15px;
+    padding: 15px;
+    min-height: calc(100vh - 180px);
+}
+
+.section-box {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 15px;
+}
+
+.section-title {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #022038;
+    text-align: center;
+    border-bottom: 2px solid #E5E7EB;
+    padding-bottom: 8px;
+}
+
+.trend-section   { grid-area: trend; }
+.bar-section     { grid-area: bar; }
+.safety-section  { grid-area: safety; }
+.donut-section   { grid-area: donut; }
+.map-section     { grid-area: map; padding: 0; overflow: hidden; border-radius: 6px;}
+.contrib-section { grid-area: contrib; }
+
+.chart-container {
+    flex-grow: 1;
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    background-color: #e5e3df;
+    z-index: 1;
+}
+
+.chart-center-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.donut-text h3 { margin: 0; font-size: 28px; color: #333; }
+.donut-text p { margin: 0; font-size: 12px; color: #666; }
+
+.gauge-text { top: 65%; } 
+.gauge-text h3 { margin: 0; font-size: 42px; color: #022038; }
+.gauge-text p { margin: 0; font-size: 14px; color: #888; font-weight: bold; }
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.stat-card {
+    background-color: #ffffff;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.stat-card h4 { margin: 0; font-size: 24px; color: #022038; }
+.stat-card p { margin: 5px 0 0 0; font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;}
+
+.expand-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    background-color: white;
+    border: 2px solid rgba(0,0,0,0.2);
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+    transition: background-color 0.2s;
+}
+
+.expand-btn:hover { background-color: #f4f4f4; }
+
+.map-section.expanded {
+    position: fixed;
+    top: 15vh;
+    left: 15vw;
+    width: 70vw;
+    height: 70vh;
+    z-index: 9999;
+    box-shadow: 0 0 0 100vmax rgba(0,0,0,0.5), 0 10px 30px rgba(0,0,0,0.3); 
+    transition: all 0.3s ease;
+}
+
+/* Map Label Styling */
+.map-label {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+/* ===== Navbar from Dashboard ===== */
+.header{
+background:#022038;
+height:72px;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+z-index: 1000;
+}
+
+#logo{
+color:white;
+font-size:18px;
+font-weight:600;
+position:absolute;
+left:20px;
+}
+
+.Nav{
+display:flex;
+gap:35px;
+}
+
+.Nav a{
+text-decoration:none;
+color:white;
+font-size:16px;
+transition:0.2s;
+}
+
+.Nav a:hover{
+color:#14B8A6;
+}
+
+.loginbtn{
+position:absolute;
+right:40px;
+width:150px;
+height:40px;
+background:#14B8A6;
+border:none;
+border-radius:6px;
+color:white;
+cursor:pointer;
+}
+
+/* New styles for menu toggle */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+    z-index: 1001;
+}
+
+@media(max-width:900px){
+
+.header {
+    justify-content: center;
+}
+
+.menu-toggle {
+    display: block;
+}
+
+.Nav{
+    display:flex;
+    flex-direction: column;
+    position: absolute;
+    top: 72px;
+    left: -100%;
+    width: 250px;
+    height: calc(100vh - 72px);
+    background: #022038;
+    padding: 20px;
+    gap: 20px;
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.Nav.active {
+    left: 0;
+}
+
+.loginbtn{
+    display: none;
+}
+
+.dashboard-container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "trend"
+        "bar"
+        "safety"
+        "donut"
+        "map"
+        "contrib";
+}
+
+.stats-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+}
+
+.top-nav {
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sub-nav {
+    flex-direction: column;
+    gap: 15px;
+}
+
+}
+
+/* Logo Image Styling */
+

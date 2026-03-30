@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Registration - SafePath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/volunteer.css">
+    <link rel="stylesheet" href="../css/floating_sos.css">
+    <link rel="stylesheet" href="../css/nav_profile.css">
+    <link rel="stylesheet" href="../css/global_responsive.css"></head>
+<body>
+    <header class="header">
+        <img id="logo" src="../resources/logo.png" alt="Safety Path Logo">
+        <nav class="Nav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="route-analysis.html">Routes</a>
+            <a href="safteyanalysis.html">Safety Analytics</a>
+            <a href="report.html">Report</a>
+            <a href="sos-center.html">SOS Center</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+                <div class="user-profile">
+            <img src="../resources/nikhil.jpg" alt="User Profile" class="profile-pic">
+                        <span class="user-name">Welcome back, Nikhil</span>
+            <div class="profile-dropdown">
+
+                <a href="login.html">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="volunteer-container">
+        <div class="volunteer-header">
+            <h2>Join Our Volunteer Network</h2>
+            <p>Help us make the community safer by volunteering with SafePath.</p>
+        </div>
+        
+        <form id="volunteerForm" class="volunteer-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" placeholder="e.g. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactNumber">Contact Number</label>
+                    <input type="tel" id="contactNumber" placeholder="+91 98765 43210" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="emailAddress">Email Address</label>
+                    <input type="email" id="emailAddress" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="volunteerRole">Preferred Role</label>
+                    <select id="volunteerRole" required>
+                        <option value="" disabled selected>Select a role...</option>
+                        <option value="community_watch">Community Watch</option>
+                        <option value="emergency_response">Emergency Response</option>
+                        <option value="safety_escort">Safety Escort</option>
+                        <option value="awareness_campaigner">Awareness Campaigner</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Residential Address</label>
+                <textarea id="address" rows="3" placeholder="Enter your full address" required></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group file-upload-group">
+                    <label for="profileImage">Upload Profile Picture</label>
+                    <div class="file-drop-area">
+                        <span class="file-msg">Drag & drop or click to upload</span>
+                        <input type="file" id="profileImage" accept="image/*" required>
+                    </div>
+                </div>
+                <div class="form-group file-upload-group">
+                    <label for="idCard">Upload Identity Card (Govt ID)</label>
+                    <div class="file-drop-area">
+                        <span class="file-msg">Drag & drop or click to upload</span>
+                        <input type="file" id="idCard" accept="image/*,.pdf" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="cancel-btn" onclick="window.location.href='profile.html'">Cancel</button>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Success Modal/Toast -->
+    <div id="toast" class="toast">Application Submitted Successfully! Our team will contact you.</div>
+
+    <footer class="footer">
+        <div class="footer_container">
+            <div class="footer_brand">
+                <img src="../resources/logo.png" alt="Safety Path Logo" class="footer_brand_logo">
+                <p>AI-powered safety navigation platform helping users make safer mobility decisions.</p>
+            </div>
+            <div class="footer_links">
+                <h4>Quick Links</h4>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="route-analysis.html">Routes</a>
+                <a href="safteyanalysis.html">Safety Analytics</a>
+                <a href="report.html">Report Incident</a>
+                <a href="sos-center.html">SOS Center</a>
+            </div>
+            <div class="footer_support">
+                <h4>Support</h4>
+                <p>Email: support@safepath.com</p>
+                <p>Emergency Help: 112</p>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <p>© 2026 Safety Path | Built for safer mobility</p>
+        </div>
+    </footer>
+
+    <script type="module" src="../Scripts/volunteer.js"></script>
+    <script src="../Scripts/nav.js"></script>
+    <script type="module" src="../firebase/session.js"></script>
+    <button class="floating_sos">SOS</button>
+    <script type="module" src="../Scripts/sos-handler.js"></script>
+</body>
+</html>

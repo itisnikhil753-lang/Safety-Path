@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - SafePath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/floating_sos.css">
+    <link rel="stylesheet" href="../css/nav_profile.css">
+    <link rel="stylesheet" href="../css/global_responsive.css">
+</head>
+
+<body>
+    <div class="admin-layout">
+        <!-- Vertical Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="admin-brand">
+                <img src="../resources/logo.png" alt="Safety Path Logo" class="logo">
+                <span class="badge">Admin Hub</span>
+            </div>
+
+            <nav class="admin-nav">
+                <a href="#" class="nav-item active">Dashboard Overview</a>
+                <a href="#" class="nav-item">Incident Reports</a>
+                <a href="#" class="nav-item">Risk Zones</a>
+                <a href="#" class="nav-item">User Management</a>
+                <a href="dashboard.html" class="nav-item return-btn">Return to App</a>
+            </nav>
+
+            <div class="admin-profile">
+                <div class="avatar">A</div>
+                <div class="details">
+                    <strong>Admin System</strong>
+                    <button class="logout-btn">Log out</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <h2>Overview & Statistics</h2>
+                <div class="header-actions">
+                    <button class="export-btn">Download Report (CSV)</button>
+                </div>
+            </header>
+
+            <!-- Key Metrics -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>Pending Validations</h3>
+                    <div class="value">142</div>
+                    <span class="trend up">+12% from yesterday</span>
+                </div>
+                <div class="metric-card">
+                    <h3>Active SOS Alerts</h3>
+                    <div class="value error">3</div>
+                    <span class="trend critical">Requires immediate action</span>
+                </div>
+                <div class="metric-card">
+                    <h3>Resolved Incidents</h3>
+                    <div class="value success">1,845</div>
+                    <span class="trend up">+4.5% this week</span>
+                </div>
+                <div class="metric-card">
+                    <h3>High-Risk Zones</h3>
+                    <div class="value warning">12</div>
+                    <span class="trend down">-2 from last month</span>
+                </div>
+            </div>
+
+            <!-- Recent Reports Table Section -->
+            <section class="reports-section">
+                <div class="section-header">
+                    <h3>Incident Reports Queue</h3>
+                    <div class="filter-controls">
+                        <select>
+                            <option>All Severities</option>
+                            <option>High Risk</option>
+                            <option>Medium Risk</option>
+                            <option>Low Risk</option>
+                        </select>
+                        <select>
+                            <option>Pending</option>
+                            <option>Validated</option>
+                            <option>Rejected</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="reports-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date & Time</th>
+                                <th>Type</th>
+                                <th>Location</th>
+                                <th>Severity</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#REQ-8432</td>
+                                <td>Today, 14:30</td>
+                                <td>Harassment</td>
+                                <td>KIIT Road, Patia</td>
+                                <td><span class="badge medium">Medium</span></td>
+                                <td><span class="status pending">Pending Review</span></td>
+                                <td>
+                                    <button class="action-btn validate" title="Validate">&#10003;</button>
+                                    <button class="action-btn reject" title="Reject">&#10005;</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button class="page-btn disabled">&laquo; Prev</button>
+                    <span class="page-info">Page 1 of 12</span>
+                    <button class="page-btn">Next &raquo;</button>
+                </div>
+            </section>
+
+            <footer class="footer" style="padding: 40px 0; border-top: 1px solid #E5E7EB; margin-top: 40px;">
+                <div class="footer_container">
+                    <div class="footer_brand">
+                        <img src="../resources/logo.png" alt="Safety Path Logo" class="footer_brand_logo">
+                        <p>AI-powered safety navigation platform helping users make safer mobility decisions.</p>
+                    </div>
+                    <div class="footer_links">
+                        <h4>Quick Links</h4>
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="route-analysis.html">Routes</a>
+                        <a href="safteyanalysis.html">Safety Analytics</a>
+                        <a href="report.html">Report Incident</a>
+                        <a href="sos-center.html">SOS Center</a>
+                    </div>
+                    <div class="footer_support">
+                        <h4>Support</h4>
+                        <p>Email: support@safepath.com</p>
+                        <p>Emergency Help: 112</p>
+                    </div>
+                </div>
+                <div class="footer_bottom">
+                    <p>© 2026 Safety Path | Built for safer mobility</p>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="../Scripts/admin.js"></script>
+    <script src="../Scripts/nav.js"></script>
+    <script type="module" src="../firebase/session.js"></script>
+    <button class="floating_sos">SOS</button>
+    <script type="module" src="../Scripts/sos-handler.js"></script>
+</body>
+
+</html>

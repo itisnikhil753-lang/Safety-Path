@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Dashboard - SafePath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="../css/volunteerdash.css">
+    <link rel="stylesheet" href="../css/floating_sos.css">
+    <link rel="stylesheet" href="../css/nav_profile.css">
+    <link rel="stylesheet" href="../css/global_responsive.css"></head>
+<body>
+    <header class="header">
+        <img id="logo" src="../resources/logo.png" alt="Safety Path Logo">
+        <nav class="Nav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="route-analysis.html">Routes</a>
+            <a href="safteyanalysis.html">Safety Analytics</a>
+            <a href="report.html">Report</a>
+            <a href="sos-center.html">SOS Center</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+        <div class="user-profile">
+            <img src="../resources/nikhil.jpg" alt="User Profile" class="profile-pic">
+            <span class="user-name">Welcome back, Nikhil</span>
+            <div class="profile-dropdown">
+                <a href="login.html">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="dash-container">
+        <!-- Sidebar Profile / Stats -->
+        <aside class="volunteer-sidebar">
+            <div class="v-profile">
+                <img src="https://ui-avatars.com/api/?name=Volunteer&background=14B8A6&color=fff" alt="Volunteer" class="v-avatar" id="vAvatar">
+                <h3 id="vName">Loading...</h3>
+                <span class="v-badge">Verified Responder</span>
+            </div>
+
+            <div class="v-stats">
+                <div class="stat-box">
+                    <h4>Total Helped</h4>
+                    <p>42 People</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Rating</h4>
+                    <p>4.9 / 5.0</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Hours</h4>
+                    <p>128h</p>
+                </div>
+            </div>
+
+            <div class="duty-toggle">
+                <h4>Duty Status</h4>
+                <p id="dutyStatusText" class="status-off">Currently Offline</p>
+                <label class="switch">
+                    <input type="checkbox" id="dutyToggleBtn">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            
+            <div class="v-menu">
+                <button class="menu-btn active">Active Requests</button>
+                <button class="menu-btn">History</button>
+                <button class="menu-btn">Resources</button>
+                <button class="menu-btn" onclick="window.location.href='profile.html'">Back to Profile</button>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Area -->
+        <main class="dash-main">
+            <div class="dash-header">
+                <h2>Live SOS & Assistance Requests</h2>
+                <div class="filter-group">
+                    <select class="filter-select">
+                        <option value="all">All Requests</option>
+                        <option value="sos">High Priority (SOS)</option>
+                        <option value="escort">Safety Escort</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="dash-content">
+                <!-- Map Area -->
+                <div class="map-wrapper">
+                    <div id="v-map"></div>
+                </div>
+
+                <!-- Requests List Area -->
+                <div class="requests-list">
+                    <h3>Nearby Alerts</h3>
+                    
+                    <div class="request-card sos-alert" id="req-1">
+                        <div class="req-header">
+                            <span class="req-type">SOS Alert</span>
+                            <span class="req-dist">1.2 km away</span>
+                        </div>
+                        <p class="req-loc">Near Central Mall, Patia</p>
+                        <p class="req-time">2 mins ago</p>
+                        <div class="req-actions">
+                            <button class="btn-accept" onclick="acceptRequest('req-1')">Accept Request</button>
+                            <button class="btn-ignore">Ignore</button>
+                        </div>
+                    </div>
+
+                    <div class="request-card escort-alert" id="req-2">
+                        <div class="req-header">
+                            <span class="req-type escort">Safety Escort</span>
+                            <span class="req-dist">3.5 km away</span>
+                        </div>
+                        <p class="req-loc">KIIT Road, Night shift worker</p>
+                        <p class="req-time">15 mins ago</p>
+                        <div class="req-actions">
+                            <button class="btn-accept" onclick="acceptRequest('req-2')">Accept Request</button>
+                            <button class="btn-ignore">Ignore</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Acknowledgment Toast -->
+            <div id="v-toast" class="v-toast">Request Accepted! Routing to location...</div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer_container">
+            <div class="footer_brand">
+                <img src="../resources/logo.png" alt="Safety Path Logo" class="footer_brand_logo">
+                <p>AI-powered safety navigation platform helping users make safer mobility decisions.</p>
+            </div>
+            <div class="footer_links">
+                <h4>Quick Links</h4>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="route-analysis.html">Routes</a>
+                <a href="safteyanalysis.html">Safety Analytics</a>
+                <a href="report.html">Report Incident</a>
+                <a href="sos-center.html">SOS Center</a>
+            </div>
+            <div class="footer_support">
+                <h4>Support</h4>
+                <p>Email: support@safepath.com</p>
+                <p>Emergency Help: 112</p>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <p>© 2026 Safety Path | Built for safer mobility</p>
+        </div>
+    </footer>
+
+    <script type="module" src="../Scripts/volunteerdash.js"></script>
+    <script src="../Scripts/nav.js"></script>
+    <script type="module" src="../firebase/session.js"></script>
+    <button class="floating_sos">SOS</button>
+    <script type="module" src="../Scripts/sos-handler.js"></script>
+</body>
+</html>
