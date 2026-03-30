@@ -24,6 +24,9 @@ app.get('/api/health', (req, res) => {
 // Serve frontend static files
 app.use(express.static(path.join(__dirname, '../frontend')));
 
+// Redirect root to login page
+app.get('/', (req, res) => res.redirect('/pages/login.html'));
+
 // Global Error Handler
 const errorHandler = require('./middleware/errorHandler');
 app.use(errorHandler);
