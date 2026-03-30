@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -19,6 +20,9 @@ app.use('/api/volunteers', require('./volunteers/volunteer.routes'));
 app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', message: 'Backend is running correctly.' });
 });
+
+// Serve frontend static files
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Global Error Handler
 const errorHandler = require('./middleware/errorHandler');
