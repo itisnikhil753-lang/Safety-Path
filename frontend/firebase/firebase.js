@@ -3,7 +3,7 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: "YOUR_FIREBASE_API_KEY", // CRITICAL: Replace with your new restricted API key
+    apiKey: "AIzaSyCyCQFUuYOn7DHtMIkLbDa9D0K-IE6bV6s", // CRITICAL: Replace with your new restricted API key
     authDomain: "safetyapp-4195d.firebaseapp.com",
     projectId: "safetyapp-4195d",
     storageBucket: "safetyapp-4195d.firebasestorage.app",
