@@ -4,10 +4,18 @@ const admin = require('firebase-admin');
 // from Firebase Project Settings -> Service Accounts -> Generate New Private Key
 // For now, it will look for the file in the backend root directory.
 let serviceAccount;
-try {
-    serviceAccount = require('../serviceAccountKey.json');
-} catch (error) {
-    console.error("Warning: serviceAccountKey.json is missing. Please download it from Firebase Console and place it in the backend folder.");
+if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+    try {
+        serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+    } catch (error) {
+        console.error("Warning: Could not parse FIREBASE_SERVICE_ACCOUNT environment variable as JSON.");
+    }
+} else {
+    try {
+        serviceAccount = require('../serviceAccountKey.json');
+    } catch (error) {
+        console.error("Warning: serviceAccountKey.json is missing and no FIREBASE_SERVICE_ACCOUNT environment variable is set.");
+    }
 }
 
 if (serviceAccount) {
